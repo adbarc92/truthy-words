@@ -8,15 +8,15 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   optimization: {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        terserOptions: { sourceMap: false },
-      }),
-    ],
+        terserOptions: { sourceMap: false }
+      })
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.ejs' }),
@@ -24,26 +24,31 @@ module.exports = {
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 0,
-      minRatio: 0.8,
-    }),
+      minRatio: 0.8
+    })
   ],
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/i,
         exclude: /\.module\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['.ts', '.js', '.tsx', '.jsx'],
-  },
+    extensions: ['.ts', '.js', '.tsx', '.jsx']
+  }
 };
