@@ -4,17 +4,17 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
-		node: true,
+    node: true
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2019,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['@typescript-eslint', 'jest'],
   rules: {
@@ -30,7 +30,7 @@ module.exports = {
     'no-unused-vars': 1,
     'no-void': 0,
     'no-tabs': 0,
-    '@typescript-eslint/no-var-requires': 1,
+    '@typescript-eslint/no-var-requires': 1
   },
-  settings: {},
+  settings: {}
 };
