@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ResultProps {
-  shortdef: string[];
+  shortDef: string[];
 }
 
-const Result = ({ shortdef }: ResultProps): JSX.Element => {
+const Result = ({ shortDef }: ResultProps): JSX.Element => {
   return (
     <div>
       <div>Definitions</div>
-      {shortdef.map((def, i) => {
+      {shortDef.map((def, i) => {
         return <span key={'def' + i}>{def}</span>;
       })}
     </div>

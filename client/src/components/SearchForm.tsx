@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
-import createDebounceFn from '../utils';
+import { createDebounceFn } from '../utils';
 
-const SearchBar = (): JSX.Element => {
-  const [searchTerm, setSearchTerm] = useState();
+interface SearchFormProps {
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
+}
 
+const SearchForm = ({
+  searchTerm,
+  setSearchTerm
+}: SearchFormProps): JSX.Element => {
   const searchDebounce = createDebounceFn((term) => {
     if (term.length > 2) {
       setSearchTerm(term);
@@ -23,3 +29,5 @@ const SearchBar = (): JSX.Element => {
     </form>
   );
 };
+
+export default SearchForm;
