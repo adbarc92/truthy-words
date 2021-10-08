@@ -1,9 +1,9 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const axios = require('axios');
+import path from 'path';
+import express from 'express';
+import morgan from 'morgan';
+import axios, { Method } from 'axios';
 
-const { dictApiKey } = require('../config');
+import { dictApiKey } from '../config';
 
 const baseUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json`;
 const PORT = process.env.PORT || 3000;
@@ -21,15 +21,13 @@ app.use(morgan('common'));
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.all('/api/*', (req, res) => {
-  const url = `${baseUrl}/${req.url.slice(4)}?key=${dictApiKey}`;
-  console.log('url:', url);
-  axios({
-    method: req.method,
-    url,
+  const { method, url, body } = req;
+  axios(`${baseUrl}/${url.slice(4)}?key=${dictApiKey}`, {
+    method: method as Method,
     headers: {
       'Content-Type': 'application/json'
     },
-    data: req.body
+    data: body
   })
     .then((apiRes) => {
       res.status(apiRes.status).send(apiRes.data);
