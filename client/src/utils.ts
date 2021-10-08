@@ -1,6 +1,6 @@
 // CREDIT: https://www.freecodecamp.org/news/javascript-debounce-example/
 
-const createDebounceFn = (fn, delay) => {
+export const createDebounceFn = (fn, delay): (() => void) => {
   let timer;
   return function (...args) {
     clearTimeout(timer);
