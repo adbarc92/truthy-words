@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && webpack",
-    "watch": "cd client && (webpack -d --watch)"
+    "watch": "cd client && (webpack -d --watch)",
+    "start:server": "cd server && node src"
   },
   "keywords": [],
   "author": "",
