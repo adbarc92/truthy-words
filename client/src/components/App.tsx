@@ -23,6 +23,7 @@ const App = (): JSX.Element => {
         .get<MerriamWebsterResponse>(`api/${searchTerm}`)
         .then((res) => {
           const word = res.data[0];
+          // console.log('word:', word);
           if (getWordValidity(word)) {
             setWordIsValid(true);
             setShortDef(word.shortdef);
@@ -45,7 +46,7 @@ const App = (): JSX.Element => {
     <div>
       {error && <div>{error}</div>}
       {loading ? (
-        <div>Loading...</div>
+        <LoadingSpinner />
       ) : (
         <>
           <SearchForm setSearchTerm={setSearchTerm} />

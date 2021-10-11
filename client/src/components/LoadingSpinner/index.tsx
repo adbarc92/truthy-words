@@ -1,4 +1,6 @@
-import 'LoadingSpinner.css';
+// SRC: https://loading.io/css
+
+import './LoadingSpinner.css';
 import React from 'react';
 
 const LoadingSpinner = (): JSX.Element => (
