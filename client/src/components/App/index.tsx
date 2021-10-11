@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import SearchForm from './SearchForm';
-import Result from './Result';
-import LoadingSpinner from './LoadingSpinner';
-import { getWordValidity } from '../utils';
+import SearchForm from '../SearchForm';
+import Result from '../Result';
+import LoadingSpinner from '../LoadingSpinner';
+import Header from '../Header';
+import './App.css';
 
-import { MerriamWebsterResponse } from '../types';
+import { getWordValidity } from '../../utils';
+import { MerriamWebsterResponse } from '../../types';
 
 const App = (): JSX.Element => {
   const [error, setError] = useState(null);
@@ -49,6 +51,7 @@ const App = (): JSX.Element => {
         <LoadingSpinner />
       ) : (
         <>
+          <Header title={'Truthy!'} />
           <SearchForm setSearchTerm={setSearchTerm} />
           {wordIsValid && <Result shortDef={shortDef} />}
         </>
