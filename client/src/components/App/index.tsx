@@ -5,6 +5,8 @@ import SearchForm from '../SearchForm';
 import Result from '../Result';
 import LoadingSpinner from '../LoadingSpinner';
 import Header from '../Header';
+import WordStatus from '../WordStatus';
+
 import './App.css';
 
 import { getWordValidity } from '../../utils';
@@ -25,7 +27,7 @@ const App = (): JSX.Element => {
         .get<MerriamWebsterResponse>(`api/${searchTerm}`)
         .then((res) => {
           const word = res.data[0];
-          // console.log('word:', word);
+          console.log('word:', word);
           if (getWordValidity(word)) {
             setWordIsValid(true);
             setShortDef(word.shortdef);
@@ -47,15 +49,20 @@ const App = (): JSX.Element => {
   return (
     <div>
       {error && <div>{error}</div>}
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          <Header title={'Truthy!'} />
+      <>
+        <Header title={'Truthy!'} />
+        <div style={{ display: 'flex' }}>
           <SearchForm setSearchTerm={setSearchTerm} />
-          {wordIsValid && <Result shortDef={shortDef} />}
-        </>
-      )}
+          {loading ? (
+            <LoadingSpinner />
+          ) : searchTerm !== '' && wordIsValid !== null ? (
+            <WordStatus wordValidity={wordIsValid} />
+          ) : (
+            <> </>
+          )}
+        </div>
+        {wordIsValid && <Result shortDef={shortDef} />}
+      </>
     </div>
   );
 };

@@ -5,7 +5,7 @@ interface HeaderProps {
   title: string;
 }
 
-const Header = ({ title }) => {
+const Header = ({ title }: HeaderProps): JSX.Element => {
   return <div>{title}</div>;
 };
 
