@@ -33,7 +33,11 @@ app.all('/api/*', (req, res) => {
       res.status(apiRes.status).send(apiRes.data);
     })
     .catch((err) => {
-      res.status(500).send(err);
+      if (err.response) {
+        res.status(err.response.status).send(err);
+      } else {
+        res.status(500).send(err);
+      }
     });
 });
 

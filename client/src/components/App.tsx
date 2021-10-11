@@ -6,6 +6,8 @@ import Result from './Result';
 import LoadingSpinner from './LoadingSpinner';
 import { getWordValidity } from '../utils';
 
+import { MerriamWebsterResponse } from '../types';
+
 const App = (): JSX.Element => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,16 +18,28 @@ const App = (): JSX.Element => {
   );
 
   useEffect(() => {
-    axios
-      .get(`/${searchTerm}`)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((e) => {
-        console.error(e);
-        setError(e);
-      });
-  }, []);
+    if (searchTerm !== '') {
+      axios
+        .get<MerriamWebsterResponse>(`api/${searchTerm}`)
+        .then((res) => {
+          const word = res.data[0];
+          if (getWordValidity(word)) {
+            setWordIsValid(true);
+            setShortDef(word.shortdef);
+          } else {
+            setWordIsValid(false);
+          }
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.error(e);
+          setError(e);
+        });
+    } else {
+      setWordIsValid(null);
+      setLoading(false);
+    }
+  }, [searchTerm]);
 
   return (
     <div>
@@ -34,11 +48,8 @@ const App = (): JSX.Element => {
         <div>Loading...</div>
       ) : (
         <>
-          <SearchForm
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-          />
-          <Result shortDef={shortDef} />
+          <SearchForm setSearchTerm={setSearchTerm} />
+          {wordIsValid && <Result shortDef={shortDef} />}
         </>
       )}
     </div>

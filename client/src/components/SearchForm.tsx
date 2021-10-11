@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import { createDebounceFn } from '../utils';
 
 interface SearchFormProps {
-  searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
 }
 
 const SearchForm = ({
-  searchTerm,
   setSearchTerm
 }: SearchFormProps): JSX.Element => {
-  const searchDebounce = createDebounceFn((term) => {
+  const searchDebounce = createDebounceFn((term: string) => {
     if (term.length > 2) {
       setSearchTerm(term);
     } else {
@@ -23,9 +21,14 @@ const SearchForm = ({
     <form>
       <label>
         Word:
-        <input type='text' name='word' />
+        <input
+          onChange={(e) => {
+            searchDebounce(e.target.value);
+          }}
+          type='text'
+          name='word'
+        />
       </label>
-      <input />
     </form>
   );
 };
