@@ -18,13 +18,19 @@ const SearchForm = ({
   });
 
   return (
-    <form>
+    <form style={{ textAlign: 'center', margin: '0.5em' }}>
       <label>
-        Word:
         <input
+          style={{
+            padding: '1em',
+            borderRadius: '2em',
+            width: '14em',
+            border: '0.2em solid #000'
+          }}
           onChange={(e) => {
             searchDebounce(e.target.value);
           }}
+          placeholder='Try Me!'
           type='text'
           name='word'
         />

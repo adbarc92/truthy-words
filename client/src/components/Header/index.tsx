@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 
 const Header = ({ title }: HeaderProps): JSX.Element => {
-  return <div>{title}</div>;
+  return <div className="header">{title}</div>;
 };
 
 export default Header;

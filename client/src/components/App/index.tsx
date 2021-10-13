@@ -47,11 +47,11 @@ const App = (): JSX.Element => {
   }, [searchTerm]);
 
   return (
-    <div>
+    <div style={{ marginTop: '15em' }}>
       {error && <div>{error}</div>}
       <>
         <Header title={'Truthy!'} />
-        <div style={{ display: 'flex' }}>
+        <div>
           <SearchForm setSearchTerm={setSearchTerm} />
           {loading ? (
             <LoadingSpinner />
