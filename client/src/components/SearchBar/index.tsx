@@ -10,6 +10,7 @@ import './SearchBar.css';
 interface SearchBarProps {
   setSearchTerm: (searchTerm: string) => void;
   loading: boolean;
+  setLoading: (loading: boolean) => void;
   searchTerm: string;
   wordIsValid: boolean | null;
 }
@@ -18,11 +19,13 @@ const SearchBar = ({
   setSearchTerm,
   loading,
   searchTerm,
-  wordIsValid
+  wordIsValid,
+  setLoading
 }: SearchBarProps): JSX.Element => {
   const searchDebounce = createDebounceFn((term: string) => {
     if (term.length > 2) {
       setSearchTerm(term);
+      setLoading(true);
     } else {
       setSearchTerm('');
     }

@@ -47,19 +47,18 @@ const App = (): JSX.Element => {
 
   return (
     <div id='app-container'>
+      <Header title={'Truthy!'} />
+      <div className='search-container'>
+        <SearchBar
+          setSearchTerm={setSearchTerm}
+          setLoading={setLoading}
+          loading={loading}
+          searchTerm={searchTerm}
+          wordIsValid={wordIsValid}
+        />
+      </div>
+      {wordIsValid && <Result shortDef={shortDef} />}
       {error && <div>{error}</div>}
-      <>
-        <Header title={'Truthy!'} />
-        <div className='search-container'>
-          <SearchBar
-            setSearchTerm={setSearchTerm}
-            loading={loading}
-            searchTerm={searchTerm}
-            wordIsValid={wordIsValid}
-          />
-        </div>
-        {wordIsValid && <Result shortDef={shortDef} />}
-      </>
     </div>
   );
 };
