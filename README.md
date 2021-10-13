@@ -11,6 +11,14 @@ A frontend which uses MerriamWebster API to verify if a combination of letters i
 
 While playing Quiddler with my family, it occurred to me that something like this would be a simple, handy tool for checking if words were valid, rather than having to Google and then sift through the results.
 
+## Demo
+
+--Coming Soon--
+
+## Requirements
+
+* An `env` file in `server` with a Merriam-Webster API key assigned to `DICT_API_KEY`
+
 ## ChangeLog
 
 ### Future Features:

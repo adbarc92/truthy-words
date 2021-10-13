@@ -14,10 +14,13 @@ export const createDebounceFn = (
 };
 
 export const getWordValidity = (data): boolean => {
-  if (
-    !data.fl ||
-    !['adverb', 'adjective', 'noun', 'verb'].includes(data.fl)
-  ) {
+  if (!data) {
+    return false;
+  }
+  if (!data.fl) {
+    return false;
+  }
+  if (!['adverb', 'adjective', 'noun', 'verb'].includes(data.fl)) {
     return false;
   }
   return true;
