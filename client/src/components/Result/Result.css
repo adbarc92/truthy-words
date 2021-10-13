@@ -1,0 +1,14 @@
+.result-container {
+	background-color: #FFF;
+	border-radius: 1em;
+	padding: 1em;
+}
+
+.result-header {
+	font-weight: bold;
+	padding: 0.5em 0;
+}
+
+.definition {
+	padding: 0.2em 0;
+}
