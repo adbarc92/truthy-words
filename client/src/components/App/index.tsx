@@ -19,6 +19,7 @@ const App = (): JSX.Element => {
   const [wordIsValid, setWordIsValid] = useState<boolean | null>(
     null
   );
+  const [speechPart, setSpeechPart] = useState('');
 
   useEffect(() => {
     if (searchTerm !== '') {
@@ -30,6 +31,7 @@ const App = (): JSX.Element => {
           if (getWordValidity(word)) {
             setWordIsValid(true);
             setShortDef(word.shortdef);
+            setSpeechPart(word.fl);
           } else {
             setWordIsValid(false);
           }
@@ -57,7 +59,9 @@ const App = (): JSX.Element => {
           wordIsValid={wordIsValid}
         />
       </div>
-      {wordIsValid && <Result shortDef={shortDef} />}
+      {wordIsValid && (
+        <Result shortDef={shortDef} speechPart={speechPart} />
+      )}
       {error && <div>{error}</div>}
     </div>
   );
