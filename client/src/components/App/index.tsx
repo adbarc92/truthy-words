@@ -51,7 +51,7 @@ const App = (): JSX.Element => {
       {error && <div>{error}</div>}
       <>
         <Header title={'Truthy!'} />
-        <div>
+        <div style={{ textAlign: 'center', margin: '0.5em' }}>
           <SearchForm setSearchTerm={setSearchTerm} />
           {loading ? (
             <LoadingSpinner />

@@ -6,12 +6,12 @@ interface ResultProps {
 
 const Result = ({ shortDef }: ResultProps): JSX.Element => {
   return (
-    <div>
+    <>
       <div>Definitions</div>
       {shortDef.map((def, i) => {
         return <span key={'def' + i}>{def}</span>;
       })}
-    </div>
+    </>
   );
 };
 
