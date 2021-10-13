@@ -3,9 +3,8 @@ import axios from 'axios';
 
 import SearchForm from '../SearchForm';
 import Result from '../Result';
-import LoadingSpinner from '../LoadingSpinner';
+
 import Header from '../Header';
-import WordStatus from '../WordStatus';
 
 import './App.css';
 
@@ -47,19 +46,24 @@ const App = (): JSX.Element => {
   }, [searchTerm]);
 
   return (
-    <div style={{ marginTop: '15em' }}>
+    <div style={{ marginTop: '15em', maxWidth: '25em' }}>
       {error && <div>{error}</div>}
       <>
         <Header title={'Truthy!'} />
-        <div style={{ textAlign: 'center', margin: '0.5em' }}>
-          <SearchForm setSearchTerm={setSearchTerm} />
-          {loading ? (
-            <LoadingSpinner />
-          ) : searchTerm !== '' && wordIsValid !== null ? (
-            <WordStatus wordValidity={wordIsValid} />
-          ) : (
-            <> </>
-          )}
+        <div
+          className='search-container'
+          style={{
+            textAlign: 'center',
+            margin: '0.5em',
+            position: 'relative'
+          }}
+        >
+          <SearchForm
+            setSearchTerm={setSearchTerm}
+            loading={loading}
+            searchTerm={searchTerm}
+            wordIsValid={wordIsValid}
+          />
         </div>
         {wordIsValid && <Result shortDef={shortDef} />}
       </>
