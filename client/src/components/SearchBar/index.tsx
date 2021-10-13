@@ -38,7 +38,7 @@ const SearchBar = ({
         onChange={(e) => {
           searchDebounce(e.target.value);
         }}
-        placeholder='Try Me!'
+        placeholder='Enter a word...'
         type='text'
         name='word'
       />
