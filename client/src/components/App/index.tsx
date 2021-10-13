@@ -27,7 +27,6 @@ const App = (): JSX.Element => {
         .get<MerriamWebsterResponse>(`api/${searchTerm}`)
         .then((res) => {
           const word = res.data[0];
-          console.log('word:', word);
           if (getWordValidity(word)) {
             setWordIsValid(true);
             setShortDef(word.shortdef);
