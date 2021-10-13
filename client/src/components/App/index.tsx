@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import SearchForm from '../SearchForm';
+import SearchBar from '../SearchBar';
 import Result from '../Result';
 
 import Header from '../Header';
@@ -46,19 +46,12 @@ const App = (): JSX.Element => {
   }, [searchTerm]);
 
   return (
-    <div style={{ marginTop: '15em', maxWidth: '20em' }}>
+    <div id='app-container'>
       {error && <div>{error}</div>}
       <>
         <Header title={'Truthy!'} />
-        <div
-          className='search-container'
-          style={{
-            textAlign: 'center',
-            margin: '0.5em',
-            position: 'relative'
-          }}
-        >
-          <SearchForm
+        <div className='search-container'>
+          <SearchBar
             setSearchTerm={setSearchTerm}
             loading={loading}
             searchTerm={searchTerm}

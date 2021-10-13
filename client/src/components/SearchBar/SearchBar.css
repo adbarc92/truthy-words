@@ -1,0 +1,11 @@
+.search-input {
+  padding: 1em;
+  border-radius: 2em;
+  width: 14em;
+  border: 0.2em solid #000;
+}
+
+.input-icon {
+  position: absolute;
+  transform: translate(-2.5em, 0.75em);
+}
