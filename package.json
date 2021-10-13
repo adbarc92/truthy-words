@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && webpack",
     "watch": "cd client && webpack --watch",
-    "start:dev": "cd server && ts-node-dev src"
+    "start:dev": "cd server && ts-node-dev src",
+    "start": "cd server && ts-node src"
   },
   "keywords": [],
   "author": "",
