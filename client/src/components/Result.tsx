@@ -6,12 +6,28 @@ interface ResultProps {
 
 const Result = ({ shortDef }: ResultProps): JSX.Element => {
   return (
-    <>
-      <div>Definitions</div>
+    <div
+      style={{
+        backgroundColor: 'white',
+        borderRadius: '1em',
+        padding: '1em'
+      }}
+    >
+      <div style={{ fontWeight: 'bold', padding: '0.5em 0' }}>
+        Definition
+      </div>
       {shortDef.map((def, i) => {
-        return <span key={'def' + i}>{def}</span>;
+        return (
+          <li
+            className='definition'
+            key={'def' + i}
+            style={{ padding: '0.2em 0' }}
+          >
+            {def}
+          </li>
+        );
       })}
-    </>
+    </div>
   );
 };
 

@@ -46,7 +46,7 @@ const App = (): JSX.Element => {
   }, [searchTerm]);
 
   return (
-    <div style={{ marginTop: '15em', maxWidth: '25em' }}>
+    <div style={{ marginTop: '15em', maxWidth: '20em' }}>
       {error && <div>{error}</div>}
       <>
         <Header title={'Truthy!'} />

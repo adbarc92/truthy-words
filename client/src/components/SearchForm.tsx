@@ -24,7 +24,7 @@ const SearchForm = ({
     } else {
       setSearchTerm('');
     }
-  });
+  }, 300);
 
   return (
     <>
