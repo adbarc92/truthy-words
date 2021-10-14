@@ -13,7 +13,9 @@ While playing Quiddler with my family, it occurred to me that something like thi
 
 ## Demo
 
---Coming Soon--
+![Here is a link to my deployment!](https://adb-truthy-words.herokuapp.com/)
+
+--Screenshots and GIF will be added shortly--
 
 ## Requirements
 
